@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# cms
+.env
+package-lock.json
+public/
+prisma/dev.db
+package-lock.json
