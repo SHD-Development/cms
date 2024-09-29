@@ -89,7 +89,7 @@ export default function AdminPage() {
             : article
         )
       );
-    } catch (_) {
+    } catch {
       setError("Failed to reject article");
     }
   }

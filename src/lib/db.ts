@@ -4,12 +4,16 @@ import { Article, Comment } from "@/types";
 // import path from "path";
 
 declare global {
-  let prisma: PrismaClient | undefined;
+  var prisma: PrismaClient | undefined;
 }
 
 const prisma = global.prisma || new PrismaClient();
 
-if (process.env.NODE_ENV !== "production") global.prisma = prisma;
+if (process.env.NODE_ENV !== "production") {
+  if (!global.prisma) {
+    global.prisma = prisma;
+  }
+}
 
 export async function getApprovedArticles(): Promise<Article[]> {
   return prisma.article.findMany({
