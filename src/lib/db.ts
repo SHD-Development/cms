@@ -4,7 +4,7 @@ import { Article, Comment } from "@/types";
 import path from "path";
 
 declare global {
-  var prisma: PrismaClient | undefined;
+  let prisma: PrismaClient | undefined;
 }
 
 const prisma = global.prisma || new PrismaClient();
