@@ -81,7 +81,7 @@ export default function CommentSection({
       } else {
         setError("評論提交失敗，請稍後再試");
       }
-    } catch (_err) {
+    } catch (_) {
       setError("評論提交時發生錯誤");
     }
   };

@@ -50,22 +50,6 @@ export default function AdminPage() {
     fetchArticles();
   }, []);
 
-  async function handleHide(_id: string) {
-    try {
-      const response = await fetch(`/api/admin/articles/${_id}/hide`, {
-        method: "POST",
-      });
-      if (!response.ok) throw new Error("Failed to reject article");
-      setArticles(
-        articles.map((article) =>
-          article.id === _id ? { ...article, status: "rejected" } : article
-        )
-      );
-    } catch (_err) {
-      setError("Failed to hide article");
-    }
-  }
-
   async function handleApprove(id: string) {
     try {
       const response = await fetch(`/api/admin/articles/${id}/approve`, {

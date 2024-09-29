@@ -8,7 +8,7 @@ export async function POST(
   try {
     await approveArticle(params.id);
     return NextResponse.json({ success: true });
-  } catch (_error) {
+  } catch (_) {
     return NextResponse.json(
       { error: "Failed to approve article" },
       { status: 500 }
