@@ -29,14 +29,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Error saving file" }, { status: 500 });
   }
 }
-
-async function ensureDir(dirPath: string) {
-  try {
-    await writeFile(dirPath, "", { flag: "wx" });
-  } catch (error) {
-    if (error instanceof Error && error.code === "EEXIST") {
-      return;
-    }
-    throw error;
-  }
-}

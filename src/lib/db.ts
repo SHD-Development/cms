@@ -1,7 +1,7 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
 import { Article, Comment } from "@/types";
-import path from "path";
+// import path from "path";
 
 declare global {
   var prisma: PrismaClient | undefined;
@@ -9,7 +9,11 @@ declare global {
 
 const prisma = global.prisma || new PrismaClient();
 
-if (process.env.NODE_ENV !== "production") global.prisma = prisma;
+if (process.env.NODE_ENV !== "production") {
+  if (!global.prisma) {
+    global.prisma = prisma;
+  }
+}
 
 export async function getApprovedArticles(): Promise<Article[]> {
   return prisma.article.findMany({
