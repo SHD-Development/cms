@@ -1,6 +1,8 @@
 "use server";
 
 import { submitArticle } from "@/lib/db";
+import { put } from "@vercel/blob";
+import { nanoid } from "nanoid";
 
 export async function handleSubmit(formData: FormData) {
   const content = formData.get("content") as string;
@@ -58,4 +60,14 @@ export async function handleSubmit(formData: FormData) {
         (error instanceof Error ? error.message : String(error)),
     };
   }
+}
+
+export async function uploadImage(image: File) {
+  const filename = `${nanoid()}.${image.name.split(".").pop()}`;
+
+  const { url } = await put(filename, image, {
+    access: "public",
+  });
+
+  return url;
 }
