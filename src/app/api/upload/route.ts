@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
+import { writeFile } from "fs/promises";
 import path from "path";
 
 export async function POST(request: Request) {
@@ -27,16 +27,5 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Error saving file:", error);
     return NextResponse.json({ error: "Error saving file" }, { status: 500 });
-  }
-}
-
-async function ensureDir(dirPath: string) {
-  try {
-    await writeFile(dirPath, "", { flag: "wx" });
-  } catch (error) {
-    if (error instanceof Error && error.code === "EEXIST") {
-      return;
-    }
-    throw error;
   }
 }

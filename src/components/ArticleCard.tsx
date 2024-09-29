@@ -1,4 +1,5 @@
 import { Article } from "@/types";
+import Image from "next/image";
 
 interface ArticleCardProps {
   article: Article;
@@ -8,10 +9,11 @@ export default function ArticleCard({ article }: ArticleCardProps) {
   return (
     <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
       {article.imageUrl && (
-        <img
+        <Image
           src={article.imageUrl}
-          alt="文章圖片"
-          className="w-full h-48 object-cover"
+          alt="Article image"
+          width={300}
+          height={200}
         />
       )}
       <div className="p-4">

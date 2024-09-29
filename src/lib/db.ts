@@ -1,7 +1,7 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
 import { Article, Comment } from "@/types";
-import path from "path";
+// import path from "path";
 
 declare global {
   let prisma: PrismaClient | undefined;

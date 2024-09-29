@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import { TextField, Button, Snackbar, Alert } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { handleSubmit } from "../actions";
 
 export default function SubmitPage() {
@@ -15,7 +14,6 @@ export default function SubmitPage() {
     "success"
   );
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
   const [articleId, setArticleId] = useState<string | null>(null);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
